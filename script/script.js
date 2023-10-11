@@ -8,6 +8,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
   })
 
   .then((database) => {
+    console.log(database);
     database.forEach((element) => {
       const bookContainer = document.getElementById("book-container");
       const newCol = document.createElement("div");
@@ -37,6 +38,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
       // EVENT LISTENER-1 (SCARTA)
       buttonDiscard.addEventListener("click", function () {
         newcard.classList.add("swing");
+        newcard.classList.remove("added-in-cart");
       });
 
       // EVENT LISTENER-2 (CARRELLO)
@@ -57,6 +59,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
         titleCart.href = "#";
         liItem.appendChild(titleCart);
         console.log(counter);
+        newcard.classList.add("added-in-cart");
         const badgeNotifications = document.getElementById(
           "badge-notifications"
         );
@@ -92,5 +95,6 @@ fetch("https://striveschool-api.herokuapp.com/books")
   })
 
   .catch((err) => {
-    // da inserire il toggle del modal
+    const modal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    modal.show();
   });
