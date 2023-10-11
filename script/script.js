@@ -8,8 +8,6 @@ fetch("https://striveschool-api.herokuapp.com/books")
   })
 
   .then((database) => {
-    console.log(database);
-
     database.forEach((element) => {
       const bookContainer = document.getElementById("book-container");
       const newCol = document.createElement("div");
@@ -44,7 +42,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
       // EVENT LISTENER-2 (CARRELLO)
       buttonCart.addEventListener("click", function () {
         const cartMenu = document.getElementById("menu-cart");
-
+        let counter = 0;
         const liItem = document.createElement("li");
         const icontrash = document.createElement("i");
 
@@ -53,18 +51,32 @@ fetch("https://striveschool-api.herokuapp.com/books")
         liItem.appendChild(icontrash);
 
         cartMenu.appendChild(liItem);
+        counter++;
         const titleCart = document.createElement("a");
         titleCart.innerText = element.title;
         titleCart.href = "#";
         liItem.appendChild(titleCart);
 
+        const badgeNotifications = document.getElementById(
+          "badge-notifications"
+        );
+
         // EVENT LISTENER-3 (TRASH)
         icontrash.addEventListener("click", function () {
+          counter--;
           icontrash.parentElement.remove();
+
+          console.log(counter);
         });
         const priceTagCart = document.createElement("span");
         priceTagCart.innerText = element.price;
         liItem.appendChild(priceTagCart);
+
+        if (counter > 0) {
+          badgeNotifications.classList.remove("badge");
+        } else {
+          badgeNotifications.classList.add("badge");
+        }
       });
 
       buttonDiscard.innerText = "Scarta";
@@ -77,15 +89,8 @@ fetch("https://striveschool-api.herokuapp.com/books")
       newCol.appendChild(newcard);
       bookContainer.appendChild(newCol);
     });
-
-    const ulcart = document.querySelector("ul");
-    const badgeNotifications = document.getElementById("badge-notifications");
-
-    if (ulcart && ul.querySelectorAll("li").length > 0) {
-      badgeNotifications.classList.remove("badge");
-    }
   })
 
   .catch((err) => {
-    // inserirò il toggle modal
+    // da inserire il toggle del modal
   });
