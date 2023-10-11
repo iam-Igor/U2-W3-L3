@@ -34,10 +34,10 @@
               >
                 <span class="navbar-toggler-icon"></span>
                 <span
+                  class="position-absolute top-100 start-0 translate-middle badge rounded-pill bg-danger badge"
                   id="badge-notifications"
-                  class="position-absolute top-100 start-0 translate-middle p-2 bg-danger border border-light rounded-circle badge"
                 >
-                  <span class="visually-hidden"></span>
+                  <span class="visually-hidden">unread messages</span>
                 </span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,6 +54,7 @@
 
                   <ul class="dropdown-menu" id="menu-cart">
                     <p class="ms-3">Titolo<span>Prezzo</span></p>
+
                     <hr />
                   </ul>
                 </ul>
@@ -101,7 +102,38 @@
     <!-- SEZIONE LIBRI -->
     <main class="mt-4">
       <div class="container-fluid">
-        <h1 class="fs-4">Most popular books</h1>
+        <div class="d-flex align-items-center justify-content-between">
+          <h1 class="fs-4 tracking-in-contract">Most popular books</h1>
+          <div
+            class="btn-group d-none d-lg-block"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio1"
+              autocomplete="off"
+              checked
+            />
+            <label class="btn btn-outline-primary" for="btnradio1"
+              ><i class="bi bi-grid"></i
+            ></label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio2"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="btnradio2"
+              ><i class="bi bi-grid-3x3"></i
+            ></label>
+          </div>
+        </div>
+
         <div class="row row-cols-lg-4 row-cols-2" id="book-container"></div>
       </div>
     </main>

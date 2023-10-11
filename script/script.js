@@ -1,3 +1,5 @@
+let counter = 0;
+
 fetch("https://striveschool-api.herokuapp.com/books")
   .then((res) => {
     if (res.ok) {
@@ -44,7 +46,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
       // EVENT LISTENER-2 (CARRELLO)
       buttonCart.addEventListener("click", function () {
         const cartMenu = document.getElementById("menu-cart");
-        let counter = 0;
+
         const liItem = document.createElement("li");
         const icontrash = document.createElement("i");
 
@@ -66,20 +68,31 @@ fetch("https://striveschool-api.herokuapp.com/books")
 
         if (counter > 0) {
           badgeNotifications.classList.remove("badge");
+          badgeNotifications.innerText = counter;
         } else {
           badgeNotifications.classList.add("badge");
         }
 
         // EVENT LISTENER-3 (TRASH)
         icontrash.addEventListener("click", function () {
-          counter--;
           icontrash.parentElement.remove();
-
-          console.log(counter);
+          counter--;
         });
         const priceTagCart = document.createElement("span");
         priceTagCart.innerText = element.price;
         liItem.appendChild(priceTagCart);
+      });
+
+      // EVENT LISTENER PER GRID VISUALIZATION-1
+      const grid4x4Btn = document.getElementById("btnradio1");
+      grid4x4Btn.addEventListener("click", function () {
+        bookContainer.classList.add("row-cols-lg-4");
+        bookContainer.classList.remove("row-cols-lg-6");
+      });
+      // EVENT LISTENER PER GRID VISUALIZATION-2
+      const grid6Btn = document.getElementById("btnradio2");
+      grid6Btn.addEventListener("click", function () {
+        bookContainer.classList.add("row-cols-lg-6");
       });
 
       buttonDiscard.innerText = "Scarta";
