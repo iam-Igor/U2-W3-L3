@@ -56,10 +56,16 @@ fetch("https://striveschool-api.herokuapp.com/books")
         titleCart.innerText = element.title;
         titleCart.href = "#";
         liItem.appendChild(titleCart);
-
+        console.log(counter);
         const badgeNotifications = document.getElementById(
           "badge-notifications"
         );
+
+        if (counter > 0) {
+          badgeNotifications.classList.remove("badge");
+        } else {
+          badgeNotifications.classList.add("badge");
+        }
 
         // EVENT LISTENER-3 (TRASH)
         icontrash.addEventListener("click", function () {
@@ -71,12 +77,6 @@ fetch("https://striveschool-api.herokuapp.com/books")
         const priceTagCart = document.createElement("span");
         priceTagCart.innerText = element.price;
         liItem.appendChild(priceTagCart);
-
-        if (counter > 0) {
-          badgeNotifications.classList.remove("badge");
-        } else {
-          badgeNotifications.classList.add("badge");
-        }
       });
 
       buttonDiscard.innerText = "Scarta";
